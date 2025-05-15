@@ -40,22 +40,31 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 		props.submit?.(model);
 	};
 
-	return (
-		<>
-			<ArrowButton
-				isOpen={isAsideOpen}
-				onClick={() => {
-					setIsAsideOpen(!isAsideOpen);
-				}}
+return (
+	<>
+		<ArrowButton
+			isOpen={isAsideOpen}
+			onClick={() => {
+				setIsAsideOpen(!isAsideOpen);
+			}}
+		/>
+		{isAsideOpen && (
+			<div
+				className={styles.overlay}
+				onClick={() => setIsAsideOpen(false)}
 			/>
-			<aside
-				className={clsx(styles.container, {
-					[styles.container_open]: isAsideOpen,
-				})}>
-				<form
-					className={styles.form}
-					onSubmit={onSubmit}
-					onReset={() => setModel(defaultArticleState)}>
+		)}
+		<aside
+			className={clsx(styles.container, {
+				[styles.container_open]: isAsideOpen,
+			})}
+			onClick={(e) => e.stopPropagation()} 
+		>
+			<form
+				className={styles.form}
+				onSubmit={onSubmit}
+				onReset={() => setModel(defaultArticleState)}
+			>
 					<Text weight={800} size={31} uppercase>
 						Задайте параметры
 					</Text>
