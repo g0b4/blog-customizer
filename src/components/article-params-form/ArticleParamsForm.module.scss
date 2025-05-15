@@ -12,6 +12,15 @@
 	transform: translate(0);
 }
 
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 998; 
+}
+
 .form {
 	display: flex;
 	flex-shrink: 0;
